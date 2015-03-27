@@ -2,7 +2,7 @@
 
 angular.module('sportsStore')
   .controller('MainCtrl', function () {
-    this.products = {
+    this.data = {
       products: [
             { name: "Product #1", description: "A product",
                 category: "Category #1", price: 100 },

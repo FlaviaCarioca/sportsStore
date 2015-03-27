@@ -2,24 +2,28 @@
 <!-- 
   <div ng-include="'components/navbar/navbar.html'"></div> -->
 
-  <div class="navbar navbar-inverse">
+    <div class="navbar navbar-inverse">
         <a class="navbar-brand" href="#">SPORTS STORE</a>
     </div>
-    <div class="panel panel-default row">
+    <div class="panel panel-default row" ng-controller="ProductListCtrl as productList">
         <div class="col-xs-3">
-             <a ng-click="selectCategory()" class='btn btn-block btn-default btn-lg'></a>
-             <a ng-repeat="item in main.products.products | orderBy: 'category | unique: 'category' "
-                ng-click="selectCategory(item)" class='btn btn-block btn-default btn-lg'>{{item}}</a>
+            <a ng-click="productList.selectCategory()"
+               class="btn btn-block btn-default btn-lg">Home</a>
+            <a ng-repeat="item in main.data.products | orderBy: 'category' | unique:'category' "
+               ng-click="productList.selectCategory(item)" class=" btn btn-block btn-default btn-lg"
+               ng-class="productList.getCategoryClass(item)">
+                {{item}}
+            </a>
         </div>
         <div class="col-xs-8">
-            <div class="well" ng-repeat="item in main.products.products">
-              <h3>
-                <strong>{{item.name}}</strong>
-                <span class="pull-right label label-primary">
-                  {{item.price | currency}}
-                </span>
-              </h3>
-              <span class="lead">{{item.description}}</span>
+            <div class="well" ng-repeat="item in main.data.products | filter: productList.categoryFilterFn">
+                <h3>
+                    <strong>{{item.name}}</strong>
+                    <span class="pull-right label label-primary">
+                        {{item.price | currency}}
+                    </span>
+                </h3>
+                <span class="lead">{{item.description}}</span>
             </div>
         </div>
     </div>

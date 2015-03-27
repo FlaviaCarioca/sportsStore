@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sportsStore', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ui.bootstrap'])
+angular.module('sportsStore', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ui.bootstrap', 'customFilters'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
